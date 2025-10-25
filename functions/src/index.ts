@@ -63,12 +63,6 @@ export const notifyCustomerOnOrderStatus = functions.firestore
     }
 
     const order: OrderRecord = { ...after, id: change.after.id };
-    const notification = buildOrderStatusNotification(order);
-
-    if (!notification) {
-      return;
-    }
-
     if (!after.userId) {
       functions.logger.info('Order has no user reference; skipping push notification', {
         orderId: change.after.id
@@ -83,6 +77,14 @@ export const notifyCustomerOnOrderStatus = functions.firestore
         orderId: change.after.id,
         userId: after.userId
       });
+      return;
+    }
+
+    const notification = buildOrderStatusNotification(order, {
+      language: profile.language
+    });
+
+    if (!notification) {
       return;
     }
 
