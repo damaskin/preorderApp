@@ -1,0 +1,15 @@
+# Node
+node_modules/
+
+# Firebase build output
+functions/lib/
+
+# Local env files
+*.local
+.env*
+
+# Firebase emulator state
+.firebase/
+
+# macOS
+.DS_Store
