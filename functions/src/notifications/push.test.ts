@@ -44,5 +44,13 @@ describe('notifications/push', () => {
 
       expect(notification?.title).toBe('Order is ready for pickup');
     });
+
+    it('supports completion status notifications', () => {
+      const notification = buildOrderStatusNotification({ ...baseOrder, status: 'COMPLETED' }, { language: 'en' });
+
+      expect(notification).not.toBeNull();
+      expect(notification?.title).toBe('Order completed');
+      expect(notification?.data.statusLabel).toBe('Completed');
+    });
   });
 });

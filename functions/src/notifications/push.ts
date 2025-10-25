@@ -29,6 +29,10 @@ const ORDER_STATUS_PUSH_TEMPLATES: Record<NotificationLanguage, LocalizedTemplat
     CANCELLED: {
       title: 'Заказ отменён',
       body: (order) => `Заказ №${order.number} в «${order.branchName}» отменён. Проверьте детали в приложении.`
+    },
+    COMPLETED: {
+      title: 'Заказ завершён',
+      body: (order) => `Заказ №${order.number} отмечен как выдан в «${order.branchName}».`
     }
   },
   en: {
@@ -43,6 +47,10 @@ const ORDER_STATUS_PUSH_TEMPLATES: Record<NotificationLanguage, LocalizedTemplat
     CANCELLED: {
       title: 'Order was cancelled',
       body: (order) => `Order #${order.number} at "${order.branchName}" was cancelled. Review details in the app.`
+    },
+    COMPLETED: {
+      title: 'Order completed',
+      body: (order) => `Order #${order.number} at "${order.branchName}" is marked as completed.`
     }
   }
 };
